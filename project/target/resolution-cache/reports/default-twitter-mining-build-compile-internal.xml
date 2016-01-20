@@ -9,7 +9,7 @@
 		extra-sbtVersion="0.13"
 		conf="compile-internal"
 		confs="compile, runtime, test, provided, optional, compile-internal, runtime-internal, test-internal, plugin, sources, docs, pom, scala-tool"
-		date="20151228174138"/>
+		date="20160120113835"/>
 	<dependencies>
 		<module organisation="org.scala-sbt" name="sbt">
 			<revision name="0.13.8" status="release" pubdate="20150320121147" resolver="sbt-chain" artresolver="sbt-chain" downloaded="false" searched="false" default="false" conf="compile, default(compile)" position="1">
@@ -700,7 +700,7 @@
 				<caller organisation="org.scala-sbt" name="test-agent" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="compile" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="tracking" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
-				<caller organisation="org.scala-sbt" name="precompiled-2_9_2" conf="compile" rev="2.9.2" rev-constraint-default="2.9.2" rev-constraint-dynamic="2.9.2" callerrev="0.13.8"/>
+				<caller organisation="org.scala-sbt" name="precompiled-2_9_2" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.9.2" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="main-settings" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-lang" name="scala-compiler" conf="default, compile, runtime, master" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="2.10.4"/>
 				<caller organisation="default" name="twitter-mining-build" conf="compile-internal, compile, provided, optional" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.1-SNAPSHOT"/>
@@ -714,12 +714,12 @@
 				<caller organisation="org.scala-sbt" name="interface" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="task-system" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="relation" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
-				<caller organisation="org.scala-sbt" name="precompiled-2_8_2" conf="compile" rev="2.8.2" rev-constraint-default="2.8.2" rev-constraint-dynamic="2.8.2" callerrev="0.13.8"/>
+				<caller organisation="org.scala-sbt" name="precompiled-2_8_2" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.8.2" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="main" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="command" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="compiler-integration" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="incremental-compiler" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
-				<caller organisation="org.scala-tools.sbinary" name="sbinary_2.10" conf="compile" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="0.4.2"/>
+				<caller organisation="org.scala-tools.sbinary" name="sbinary_2.10" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.2" callerrev="0.4.2"/>
 				<caller organisation="org.scala-sbt" name="persist" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="cross" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="run" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
@@ -736,48 +736,17 @@
 				<caller organisation="org.scala-sbt" name="completion" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="api" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="ivy" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
-				<caller organisation="org.json4s" name="json4s-ast_2.10" conf="compile, runtime" rev="2.10.0" rev-constraint-default="2.10.0" rev-constraint-dynamic="2.10.0" callerrev="3.2.10"/>
-				<caller organisation="org.scala-sbt" name="precompiled-2_9_3" conf="compile" rev="2.9.3" rev-constraint-default="2.9.3" rev-constraint-dynamic="2.9.3" callerrev="0.13.8"/>
+				<caller organisation="org.json4s" name="json4s-ast_2.10" conf="compile, runtime" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.0" callerrev="3.2.10"/>
+				<caller organisation="org.scala-sbt" name="precompiled-2_9_3" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.9.3" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="sbt" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scala-sbt" name="classpath" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.13.8"/>
 				<caller organisation="org.scalamacros" name="quasiquotes_2.10" conf="compile, runtime" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="2.0.1"/>
 				<caller organisation="org.scala-sbt" name="serialization_2.10" conf="compile" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.4" callerrev="0.1.1"/>
-				<caller organisation="org.json4s" name="json4s-core_2.10" conf="default, compile, runtime, master" rev="2.10.0" rev-constraint-default="2.10.0" rev-constraint-dynamic="2.10.0" callerrev="3.2.10"/>
+				<caller organisation="org.json4s" name="json4s-core_2.10" conf="default, compile, runtime, master" rev="2.10.4" rev-constraint-default="2.10.4" rev-constraint-dynamic="2.10.0" callerrev="3.2.10"/>
 				<artifacts>
 					<artifact name="scala-library" type="jar" ext="jar" status="no" details="" size="7126372" time="0" location="/home/yachironi/.ivy2/cache/org.scala-lang/scala-library/jars/scala-library-2.10.4.jar">
 						<origin-location is-local="false" location="file:/home/yachironi/tools/activator-dist-1.3.6/repository/org.scala-lang/scala-library/2.10.4/jars/scala-library.jar"/>
 					</artifact>
-				</artifacts>
-			</revision>
-			<revision name="2.9.3" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="default, compile, runtime, default(compile), master" position="-1">
-				<evicted-by rev="2.10.4"/>
-				<caller organisation="org.scala-sbt" name="precompiled-2_9_3" conf="compile" rev="2.9.3" rev-constraint-default="2.9.3" rev-constraint-dynamic="2.9.3" callerrev="0.13.8"/>
-				<artifacts>
-				</artifacts>
-			</revision>
-			<revision name="2.9.2" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="default, compile, runtime, default(compile), master" position="-1">
-				<evicted-by rev="2.10.4"/>
-				<caller organisation="org.scala-sbt" name="precompiled-2_9_2" conf="compile" rev="2.9.2" rev-constraint-default="2.9.2" rev-constraint-dynamic="2.9.2" callerrev="0.13.8"/>
-				<artifacts>
-				</artifacts>
-			</revision>
-			<revision name="2.8.2" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="default, compile, runtime, default(compile), master" position="-1">
-				<evicted-by rev="2.10.4"/>
-				<caller organisation="org.scala-sbt" name="precompiled-2_8_2" conf="compile" rev="2.8.2" rev-constraint-default="2.8.2" rev-constraint-dynamic="2.8.2" callerrev="0.13.8"/>
-				<artifacts>
-				</artifacts>
-			</revision>
-			<revision name="2.10.0" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="compile, runtime(*), master(compile), runtime, compile(*), master" position="-1">
-				<evicted-by rev="2.10.4"/>
-				<caller organisation="org.json4s" name="json4s-ast_2.10" conf="compile, runtime" rev="2.10.0" rev-constraint-default="2.10.0" rev-constraint-dynamic="2.10.0" callerrev="3.2.10"/>
-				<caller organisation="org.json4s" name="json4s-core_2.10" conf="default, compile, runtime, master" rev="2.10.0" rev-constraint-default="2.10.0" rev-constraint-dynamic="2.10.0" callerrev="3.2.10"/>
-				<artifacts>
-				</artifacts>
-			</revision>
-			<revision name="2.10.2" evicted="latest-revision" evicted-reason="" downloaded="false" searched="false" conf="default, compile, runtime, default(compile), master" position="-1">
-				<evicted-by rev="2.10.4"/>
-				<caller organisation="org.scala-tools.sbinary" name="sbinary_2.10" conf="compile" rev="2.10.2" rev-constraint-default="2.10.2" rev-constraint-dynamic="2.10.2" callerrev="0.4.2"/>
-				<artifacts>
 				</artifacts>
 			</revision>
 		</module>

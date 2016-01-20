@@ -1,29 +1,44 @@
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import org.graphstream.graph.Graph;
+import org.graphstream.graph.implementations.SingleGraph;
 
 /**
  * Created by yachironi on 15/12/15.
  */
 public class Main {
-    public static void main(String[] args) {
-        Object[] tab = {3.2D, 22.01D, new Date()};
-        List<Date> dates = new ArrayList<>();
-        List<Double> doubles = new ArrayList<>();
+    public static void main(String[] args) throws InterruptedException {
+        Graph graph = new SingleGraph("Tutorial 1");
 
-        for (int i = 0; i < tab.length; i++) {
-            try {
-                double doubleVar = (Double) tab[i];
-                doubles.add(doubleVar);
-            } catch (ClassCastException e) {
-                try {
-                    Date dateVar = (Date) tab[i];
-                    dates.add(dateVar);
-                } catch (Exception e2) {
-                    System.out.printf("No cast possible");
-                }
+        graph.display(true);
+
+
+        int id = 0;
+        for (int i = 0; i < 1; i++) {
+            int iId = id++;
+            graph.addNode(String.valueOf(iId));
+            graph.getNode(String.valueOf(iId)).addAttribute("Degree", 1L);
+
+            for (int j = 2; j < 23; j++) {
+                int jId = id++;
+                graph.addNode(String.valueOf(jId));
+                graph.getNode(String.valueOf(jId)).addAttribute("Degree", 1L);
+
+                graph.addEdge(iId + "->" + jId, String.valueOf(iId), String.valueOf(jId));
+
+                graph.getNode(String.valueOf(iId)).setAttribute("Degree", graph.getNode(String.valueOf(iId)).getAttribute("Degree", Long.class) + 1);
+                Thread.sleep(100);
             }
         }
+
+        System.out.println(graph.getNode("0").getDegree());
+
+        for (int i = 4; i < 19; i++) {
+            graph.removeNode(String.valueOf(i));
+            Thread.sleep(100);
+
+        }
+        System.out.println(graph.getNode("0").getDegree());
+
+        System.out.println(graph.getNode("0").getAttribute("Degree", Long.class));
     }
 
 
