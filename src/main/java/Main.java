@@ -1,4 +1,5 @@
 import org.graphstream.graph.Graph;
+import org.graphstream.graph.Node;
 import org.graphstream.graph.implementations.SingleGraph;
 
 /**
@@ -8,18 +9,24 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         Graph graph = new SingleGraph("Tutorial 1");
 
+        String styleSheet = "graph { padding: 40px; } node { text-alignment: at-right; text-padding: 3px, 2px; text-background-mode: rounded-box; text-background-color: #EB2; text-color: #222; }";
+        graph.addAttribute("stylesheet", styleSheet);
+
         graph.display(true);
 
 
         int id = 0;
         for (int i = 0; i < 1; i++) {
             int iId = id++;
-            graph.addNode(String.valueOf(iId));
+            Node x = graph.addNode(String.valueOf(iId));
+            x.addAttribute("ui.label", iId);
+
             graph.getNode(String.valueOf(iId)).addAttribute("Degree", 1L);
 
             for (int j = 2; j < 23; j++) {
                 int jId = id++;
-                graph.addNode(String.valueOf(jId));
+                Node x2 = graph.addNode(String.valueOf(jId));
+                x2.addAttribute("ui.label", jId);
                 graph.getNode(String.valueOf(jId)).addAttribute("Degree", 1L);
 
                 graph.addEdge(iId + "->" + jId, String.valueOf(iId), String.valueOf(jId));

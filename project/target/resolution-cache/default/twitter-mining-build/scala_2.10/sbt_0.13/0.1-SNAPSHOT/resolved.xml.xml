@@ -4,7 +4,7 @@
 		module="twitter-mining-build"
 		revision="0.1-SNAPSHOT"
 		status="integration"
-		publication="20160120113835"
+		publication="20160127234101"
 		e:sbtVersion="0.13" e:scalaVersion="2.10"
 	>
 		<description>
