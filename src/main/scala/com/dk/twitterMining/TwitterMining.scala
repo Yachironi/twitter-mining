@@ -18,8 +18,11 @@ import scala.util.control.Breaks._
   */
 object TwitterMining {
 
-  val maxNumberOfNodes = 30
+  val maxNumberOfNodes = 15
   val epsilon = 0.1D
+  val numberOfDenseGraphToFind = 4
+  val reduceToMaxOf10 = true
+  val display = true
 
   def main(args: Array[String]) {
     if (args.length < 2) {
@@ -95,7 +98,7 @@ object TwitterMining {
 
     val graph = createGraph(edgesArray, false)
 
-    val denseGraphs: mutable.Map[Int, Graph] = getDenseGraphs(graph, 4, epsilon, reduceToMax = true, display = true)
+    val denseGraphs: mutable.Map[Int, Graph] = getDenseGraphs(graph, numberOfDenseGraphToFind, epsilon, reduceToMaxOf10, display)
 
     // Print the densest sub graph
     // denseGraphs.get(0).get.display(true)
@@ -106,7 +109,6 @@ object TwitterMining {
         fileName = outputDirectory + "/" + dataSetName + ".DENSEST.subgr.json"
       } else {
         fileName = outputDirectory + "/" + dataSetName + "." + densGraph._1 + ".subgr.json"
-
       }
 
       val jsonFile: mutable.LinkedHashMap[String, JsValue] = mutable.LinkedHashMap()
@@ -118,6 +120,7 @@ object TwitterMining {
       jsonFile("density") = getGraphDensity(densGraph._2).toJson
       jsonFile("nb_unique_users") = numberOfDistinctUsers(densGraph._2, hashTagNbTweetsNbUsers).toJson
       jsonFile("nb_unique_tweets") = numberOfDistinctTweets(densGraph._2, hashTagNbTweetsNbUsers).toJson
+      jsonFile("nodes") = densGraph._2.getNodeSet[Node].map(node => node.getId).toJson
       jsonFile("edges") = densGraphList.toJson
 
       Files.deleteIfExists((new File(fileName)).toPath())
@@ -171,23 +174,24 @@ object TwitterMining {
   }
 
   def getGraphDensity(graph: Graph): Double = {
-    return graph.getEdgeCount.toDouble / graph.getNodeCount.toDouble
+    return (graph.getEdgeCount.toDouble / graph.getNodeCount.toDouble)
   }
 
   def getDensestSubGraph(graph: Graph, display: Boolean, reduceToMax: Boolean, epsilon: Double): Graph = {
     var iteration: Int = 0
-    var densestSubGraph = copyGraph(graph)
 
+    var densestSubGraph = copyGraph(graph)
     val originalGraph = copyGraph(graph)
 
     if (display) {
       originalGraph.display(true)
+      Thread.sleep(3000)
     }
 
     breakable {
       while (originalGraph.getNodeCount > 1) {
         if (display) {
-          Thread.sleep(1000)
+          Thread.sleep(700)
         }
         iteration += 1
         println("Iteration:\t" + iteration)
@@ -227,7 +231,7 @@ object TwitterMining {
       breakable {
         while (originalGraph.getNodeCount > maxNumberOfNodes) {
           if (display) {
-            Thread.sleep(10)
+            Thread.sleep(100)
           }
           iteration += 1
           println("Iteration:\t" + iteration)
@@ -263,7 +267,7 @@ object TwitterMining {
   }
 
   def copyGraph(graph: Graph): Graph = {
-    var styleSheet = "graph { padding:  20px; } node { size-mode: fit; shape: rounded-box; fill-color: white; stroke-mode: plain; padding: 3px, 2px;text-size:13;text-style:bold;text-padding: 5px, 4px;}";
+    var styleSheet = "node { size-mode: fit; shape: rounded-box; fill-color: white; stroke-mode: plain; padding: 3px, 2px;text-size:13;text-style:bold;text-padding: 5px, 4px;}";
     var graphCopy: Graph = new SingleGraph("tutorial 5")
     graphCopy.addAttribute("ui.stylesheet", styleSheet)
     graphCopy.setAutoCreate(true)
@@ -294,7 +298,7 @@ object TwitterMining {
   }
 
   def createGraph(edges: Array[(String, String, String, Long)], display: Boolean): Graph = {
-    var styleSheet = "graph { padding:  20px; } node { size-mode: fit; shape: rounded-box; fill-color: white; stroke-mode: plain; padding: 3px, 2px;text-size:13;text-style:bold;text-padding: 5px, 4px;}";
+    var styleSheet = "node { size-mode: fit; shape: rounded-box; fill-color: white; stroke-mode: plain; padding: 3px, 2px;text-size:13;text-style:bold;text-padding: 5px, 4px;}";
     var graph: Graph = new SingleGraph("tutorial 1")
     graph.addAttribute("ui.stylesheet", styleSheet)
     graph.setAutoCreate(true)
@@ -305,7 +309,10 @@ object TwitterMining {
     }
     edges.foreach(edge => {
       val createdEdge = graph.addEdge[Edge](edge._1, edge._2, edge._3)
+
       if (createdEdge != null) {
+        createdEdge.addAttribute("weight", edge._4.asInstanceOf[AnyRef])
+
         createdEdge.getSourceNode[Node].addAttribute("label", createdEdge.getSourceNode[Node].getId)
         createdEdge.getSourceNode[Node].addAttribute("ui.color", "0.5")
 
